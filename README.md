@@ -82,5 +82,5 @@ function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
 ### Authors
 
 - [@ahmetb](https://twitter.com/ahmetb)
-- [@arriqaaq]
+- [@arriqaaq](https://github.com/arriqaaq)
 -----
