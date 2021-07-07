@@ -33,8 +33,6 @@ def main():
     globs = [('sys', '--namespace=kube-system', None, ['sys'])]
 
     ops = [
-        ('a', 'apply --recursive -f', None, None),
-        ('ak', 'apply -k', None, ['sys']),
         ('k', 'kustomize', None, ['sys']),
         ('ex', 'exec -i -t', None, None),
         ('lo', 'logs -f', None, None),
@@ -43,19 +41,18 @@ def main():
         ('pf', 'port-forward', None, ['sys']),
         ('g', 'get', None, None),
         ('d', 'describe', None, None),
-        ('rm', 'delete', None, None),
         ('run', 'run --rm --restart=Never --image-pull-policy=IfNotPresent -i -t', None, None),
         ]
 
     res = [
-        ('po', 'pods', ['g', 'd', 'rm'], None),
-        ('dep', 'deployment', ['g', 'd', 'rm'], None),
-        ('svc', 'service', ['g', 'd', 'rm'], None),
-        ('ing', 'ingress', ['g', 'd', 'rm'], None),
-        ('cm', 'configmap', ['g', 'd', 'rm'], None),
-        ('sec', 'secret', ['g', 'd', 'rm'], None),
+        ('po', 'pods', ['g', 'd'], None),
+        ('dep', 'deployment', ['g', 'd'], None),
+        ('svc', 'service', ['g', 'd'], None),
+        ('ing', 'ingress', ['g', 'd'], None),
+        ('cm', 'configmap', ['g', 'd'], None),
+        ('sec', 'secret', ['g', 'd'], None),
         ('no', 'nodes', ['g', 'd'], ['sys']),
-        ('ns', 'namespaces', ['g', 'd', 'rm'], ['sys']),
+        ('ns', 'namespaces', ['g', 'd'], ['sys']),
         ]
     res_types = [r[0] for r in res]
 
@@ -73,9 +70,9 @@ def main():
 
     # these accept a value, so they need to be at the end and
     # mutually exclusive within each other.
-    positional_args = [('f', '--recursive -f', ['g', 'd', 'rm'], res_types + ['all'
-                       , 'l', 'sys']), ('l', '-l', ['g', 'd', 'rm'], ['f',
-                       'all']), ('n', '--namespace', ['g', 'd', 'rm',
+    positional_args = [('f', '--recursive -f', ['g', 'd'], res_types + ['all'
+                       , 'l', 'sys']), ('l', '-l', ['g', 'd'], ['f',
+                       'all']), ('n', '--namespace', ['g', 'd',
                        'lo', 'ex', 'pf'], ['ns', 'no', 'sys', 'all'])]
 
     # [(part, optional, take_exactly_one)]
