@@ -1,7 +1,7 @@
-# kubectl-aliases
+# kubectl-aliases (read-only)
 
 This repository contains [a script](generate_aliases.py) to generate hundreds of
-convenient shell aliases for kubectl, so you no longer need to spell out every single
+**read-only** convenient shell aliases for kubectl, so you no longer need to spell out every single
 command and --flag over and over again.
 
 An example shell alias created from command/flags permutation looks like:
@@ -21,11 +21,6 @@ alias kgpo='kubectl get pod'
 
 alias ksysgpo='kubectl --namespace=kube-system get pod'
 
-alias krm='kubectl delete'
-alias krmf='kubectl delete -f'
-alias krming='kubectl delete ingress'
-alias krmingl='kubectl delete ingress -l'
-alias krmingall='kubectl delete ingress --all-namespaces'
 
 alias kgsvcoyaml='kubectl get service -o=yaml'
 alias kgsvcwn='watch kubectl get service --namespace'
@@ -39,7 +34,7 @@ See [the full list](.kubectl_aliases).
 
 ### Installation
 
-You can directly download the [`.kubectl_aliases` file](https://rawgit.com/ahmetb/kubectl-alias/master/.kubectl_aliases)
+You can directly download the [`.kubectl_aliases` file](https://github.com/arriqaaq/kubectl-aliases/blob/master/.kubectl_aliases)
 and save it in your $HOME directory, then edit your .bashrc/.zshrc file with:
 
 ```sh
@@ -66,9 +61,6 @@ function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
 * commands:
   * **`g`**=`get`
   * **`d`**=`describe`
-  * **`rm`**=`delete`
-  * **`a`**:`apply -f`
-  * **`ak`**:`apply -k`
   * **`k`**:`kustomize`
   * **`ex`**: `exec -i -t`
   * **`lo`**: `logs -f`
@@ -86,25 +78,9 @@ function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
   * **`f`**=`-f/--filename`
   * **`l`**=`-l/--selector`
   
-### FAQ
-
-- **Doesn't this slow down my shell start up?** Sourcing the file that contains
-~500 aliases takes about 30-45 milliseconds in my shell (zsh). I don't think
-it's a big deal for me. Measure it with `echo $(($(date +%s%N)/1000000))`
-command yourself in your .bashrc/.zshrc.
-
-- **Can I add more Kubernetes resource types to this?** Please consider forking
-  this repo and adding the resource types you want. Not all resource types are
-  used by everyone, and adding more resource types slows down shell initialization
-  see above).
-
-- **Where can I find PowerShell aliases for kubectl?** There’s a fork of this
-  [here](https://github.com/shanoor/kubectl-aliases-powershell).
 
 ### Authors
 
 - [@ahmetb](https://twitter.com/ahmetb)
-
+- [@arriqaaq]
 -----
-
-This is not an official Google project.
