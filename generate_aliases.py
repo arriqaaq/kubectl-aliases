@@ -53,6 +53,9 @@ def main():
         ('sec', 'secret', ['g', 'd'], None),
         ('no', 'nodes', ['g', 'd'], ['sys']),
         ('ns', 'namespaces', ['g', 'd'], ['sys']),
+	('pv', 'persistentvolume', ['g', 'd'], ['sys']),
+	('pvc', 'persistentvolumeclaims', ['g', 'd'], ['sys']),
+	('sts', 'statefulsets', ['g', 'd'], ['sys'])
         ]
     res_types = [r[0] for r in res]
 
